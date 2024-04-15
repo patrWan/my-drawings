@@ -1,4 +1,5 @@
 import type {Drawing, User} from "./types";
+import {login, logout} from "@/actions/loginAction";
 
 const api = {
     drawing : {
@@ -46,6 +47,18 @@ const api = {
                     password : "123456",
                 },
             ]
+        },
+
+        login : async (username : string, password : string): Promise<string> => {
+            const userExist = await (await api.user.list())
+            .find(x => x.username == username && x.password == password );
+
+            if(typeof userExist !== "undefined") {
+                login();
+                return 'Bienvenido @'+username;
+            }
+            
+            return 'Usuario o contraseña incorrecto';
         }
     }
 };

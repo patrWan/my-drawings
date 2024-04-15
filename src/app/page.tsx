@@ -1,5 +1,3 @@
-"use client";
-
 import api from "@/api";
 import LoginForm from "@/components/LoginForm";
 
