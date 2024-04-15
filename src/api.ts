@@ -1,4 +1,4 @@
-import type {Drawing} from "./types";
+import type {Drawing, User} from "./types";
 
 const api = {
     drawing : {
@@ -30,6 +30,23 @@ const api = {
             },
         ]
      }
+    },
+
+    user : {
+        list : async (): Promise<User[]> => {
+            return [
+                {
+                    id : 1,
+                    username : "patr.wan",
+                    password : "123456",
+                },
+                {
+                    id : 2,
+                    username : "nanitastica",
+                    password : "123456",
+                },
+            ]
+        }
     }
 };
 

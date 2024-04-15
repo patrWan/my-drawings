@@ -1,22 +1,17 @@
-import api from "@/api";
-import {dateFormat} from "@/lib/util";
+"use client";
 
-export default async function Home() {
-  const drawings = await api.drawing.list();
+import api from "@/api";
+import LoginForm from "@/components/LoginForm";
+
+export default function Home() {
   return (
-    <main className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 my-16">
-      {drawings.map(({ id, date, url, description }) => (
-        <div key={id}>
-          <p className="text-center text-sm opacity-55 mb-2">{dateFormat(date)}</p>
-          <img
-            className="h-60 w-60 mx-auto shadow-lg shadow-black opacity-90 hover:opacity-100 rounded-sm cursor-pointer"
-            src={url}
-          />
-          <p className="text-center my-4 text-sm text-balance opacity-70">
-            {description}
-          </p>
-        </div>
-      ))}
+    <main className="grid">
+      <div className="bg-zinc-900 h-96 m-auto w-96 grid gap-1 p-4">
+        <h1 className="text-4xl text-white font-bold uppercase text-center">
+          My @Draws
+        </h1>
+        <LoginForm />
+      </div>
     </main>
   );
 }
