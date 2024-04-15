@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +14,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="container m-auto grid min-h-screen grid-rows-[auto,1fr,auto] bg-zinc-800 ">
+        <header className="flex items-center justify-between">
+          <Link className="text-xl font-bold leading-[4rem]" href="/">
+            My Draws
+          </Link>
+          <nav>
+            <ul className="flex gap gap-4">
+              <li>
+                <Link className="text-gray-300 hover:text-white" href="/about">
+                  Registrate
+                </Link>
+              </li>
+              <li>
+                <Link className="text-gray-300 hover:text-white" href="/about">
+                  Sobre la página
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        {children}
+        <footer className="text-center leading-[4rem] opacity-70">
+          © {new Date().getFullYear()} My draw App
+        </footer>
+      </body>
     </html>
   );
 }
