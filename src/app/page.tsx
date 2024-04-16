@@ -1,4 +1,3 @@
-import api from "@/api";
 import LoginForm from "@/components/LoginForm";
 
 export default function Home() {

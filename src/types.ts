@@ -3,6 +3,7 @@ export interface Drawing {
   date: string;
   url: string;
   description: string;
+  usernameId : string; // Por ahora sera el username
 }
 
 export interface Profile {
