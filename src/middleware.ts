@@ -1,31 +1,23 @@
-import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { notFound } from 'next/navigation';
+import NextAuth from 'next-auth';
+import { authConfig } from './auth.config';
+
 import api from "@/api";
 
-export async function middleware(request: NextRequest) {
-  /*
-  const currentUser = request.cookies.get("session")?.value;
+export default NextAuth(authConfig).auth;
 
-  if (currentUser && !request.nextUrl.pathname.startsWith("/dashboard")) {
-    return Response.redirect(new URL("/dashboard", request.url));
-  }
-
-  if (!currentUser && request.nextUrl.pathname.startsWith("/dashboard")) {
-    return Response.redirect(new URL("/", request.url));
-  */
-  const path = request.nextUrl.pathname.slice(
-    1,
-    request.nextUrl.pathname.length
-  );
-
+export async function middleware(request : NextRequest) {
+  const path = request.nextUrl.pathname.slice(1, request.nextUrl.pathname.length);
   const userExist = await searchProfile(path);
-  
-  console.log(userExist)
 
-  if (typeof userExist === "undefined" && request.nextUrl.pathname !== "/" && request.nextUrl.pathname !== "/about") {
-    console.log('NO EXISTE')
-    return Response.error();
+  //console.log(userExist);
+
+  if (
+    typeof userExist === "undefined" &&
+    request.nextUrl.pathname !== "/" &&
+    request.nextUrl.pathname !== "/about"
+  ) {
+    return Response.error()
   }
 
 }

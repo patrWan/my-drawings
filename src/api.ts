@@ -100,7 +100,7 @@ const api = {
       ).find((x) => x.username == username && x.password == password);
 
       if (typeof userExist !== "undefined") {
-        login();
+        login(username);
         return "Bienvenido @" + username;
       }
 

@@ -51,19 +51,19 @@ export default function ProfileInfo() {
             {profile?.profile.socialMedia.map(x => 
                 {
                     if(x.name === "instagram"){
-                        return <a href={x.url}>
+                        return <a href={x.url} key={x.name}>
                             <InstagramFilled className="cursor-pointer text-gray-300 text-xl hover:text-white" />
                         </a>
                     }
 
                     if(x.name === "x"){
-                        return <a href={x.url}>
+                        return <a href={x.url} key={x.name}>
                             <TwitterSquareFilled className="cursor-pointer text-gray-300 text-xl hover:text-white" />
                         </a>
                     }
 
                     if(x.name === "facebook"){
-                        return <a href={x.url}>
+                        return <a href={x.url} key={x.name}>
                             <FacebookFilled className="cursor-pointer text-gray-300 text-xl hover:text-white" />
                         </a>
                     }
