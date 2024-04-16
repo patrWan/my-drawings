@@ -64,6 +64,10 @@ const api = {
                 name : "x",
                 url : "https://twitter.com/GenshinImpact"
               },
+              {
+                name : "facebook",
+                url : "https://twitter.com/GenshinImpact"
+              },
             ]
           }
         },
