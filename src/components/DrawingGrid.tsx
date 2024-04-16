@@ -21,6 +21,7 @@ export default function DrawingGrid() {
 
     getDrawings();
   }, []);
+  
   return (
     <section className="grid gap-4 md:grid-cols-2 bg-gray-950 rounded-md">
       {drawings.map(({ id, date, url, description }) => (

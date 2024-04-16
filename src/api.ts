@@ -61,6 +61,11 @@ const api = {
       ];
     },
 
+    getUser: async (username : string): Promise<User | undefined> => {
+        const user  = (await api.user.list()).find(user => user.username === username);
+        return user;
+    },
+
     login: async (username: string, password: string): Promise<string> => {
       const userExist = await (
         await api.user.list()
