@@ -14,7 +14,10 @@ export default function ProfileInfo() {
   const pathname = usePathname();
 
   useEffect(() => {
-    async function getProfile() {}
+    async function getProfile() {
+        const user = await api.user.getUser(pathname.slice(1,pathname.length));
+        setProfile(user);
+    }
 
     getProfile();
   }, []);
@@ -24,14 +27,14 @@ export default function ProfileInfo() {
       <div className=" p-2 flex justify-center items-center w-full col-span-3 md:col-span-1">
         <img
           className="rounded-3xl h-36 w-36 border-8 border-gray-900 border-opacity-20"
-          src="/profile.png"
+          src={profile?.profile.picture}
         />
       </div>
 
       <div className="p-4 grid col-span-3 space-y-4">
-        <p className="text-xl font-bold font-mono text-center md:text-left">@patr.wan</p>
+        <p className="text-xl font-bold font-mono text-center md:text-left">@{profile?.username}</p>
         <p className="opacity-80 font-mono text-center md:text-left">
-          My heart is saying I'm not caring no more ♥️
+          {profile?.profile.description}
         </p>
         <div className="flex space-x-4 justify-center md:justify-normal">
           <svg

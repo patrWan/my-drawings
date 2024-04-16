@@ -1,4 +1,4 @@
-import type { Drawing, User } from "./types";
+import type { Drawing, User, Profile } from "./types";
 import { login, logout } from "@/actions/loginAction";
 
 const api = {
@@ -52,11 +52,35 @@ const api = {
           id: 1,
           username: "patr.wan",
           password: "123456",
+          profile : {
+            picture : "/profile.png",
+            description : "My heart is saying I'm not caring no more ♥️",
+            socialMedia : [
+              {
+                name : "instagram",
+                url : "https://www.instagram.com/patr.wan/"
+              },
+              {
+                name : "x",
+                url : "https://twitter.com/GenshinImpact"
+              },
+            ]
+          }
         },
         {
           id: 2,
           username: "nanitastica",
           password: "123456",
+          profile : {
+            picture : "/profile_nani.png",
+            description : "⭐I am not throwin' away my shot⭐",
+            socialMedia : [
+              {
+                name : "instagram",
+                url : "https://www.instagram.com/t_n.nani/"
+              },
+            ]
+          }
         },
       ];
     },

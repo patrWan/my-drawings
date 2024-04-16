@@ -9,10 +9,12 @@ export interface Drawing {
 export interface Profile {
   picture: string;
   description: string;
+  socialMedia : {}[]
 }
 
 export interface User {
   id: number;
   username: string;
   password: string;
+  profile : Profile;
 }
