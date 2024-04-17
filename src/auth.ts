@@ -13,7 +13,7 @@ export const { auth, signIn, signOut } = NextAuth({
         password : {label : "password", type: "text"},
     } ,
     async authorize(credentials){
-        console.log(credentials);
+        //console.log(credentials);
 
         const userExist : User | undefined = await api.user.getUser(credentials.username);
 

@@ -1,6 +1,11 @@
 import LoginForm from "@/components/LoginForm";
+import { auth } from "@/auth";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+
+  if (!session?.user)
+
   return (
     <main className="grid">
       <div className="bg-zinc-900 h-96 m-auto w-96 grid gap-1 p-4">

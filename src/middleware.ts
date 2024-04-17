@@ -1,20 +1,26 @@
 import type { NextRequest } from "next/server";
+import  { NextResponse } from "next/server";
 
 import NextAuth from 'next-auth';
 import { authConfig } from './auth.config';
 
 import api from "@/api";
 
+import { auth } from "@/auth";
+
 export default NextAuth(authConfig).auth;
 
-export async function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest, response : NextResponse) {
   const path = request.nextUrl.pathname.slice(
     1,
     request.nextUrl.pathname.length
   );
   const userExist = await searchProfile(path);
+  const session = await auth();
 
-  //console.log(userExist);
+  console.log(session?.user);
+
+  if (session?.user !== undefined && request.nextUrl.pathname === "/") return Response.redirect(`http://localhost:3000/${session.user.name}`)
 
   if (
     typeof userExist === "undefined" &&

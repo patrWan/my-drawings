@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { auth, signOut } from "@/auth";
-import { redirect } from "next/navigation";
+
+import {
+  LogoutOutlined
+} from "@ant-design/icons";
 
 export default async function Header() {
   const session = await auth();
@@ -14,6 +17,12 @@ export default async function Header() {
       </Link>
       <nav>
         <ul className="flex gap gap-4">
+          
+          <li>
+            <Link className="text-gray-300 hover:text-white" href="/about">
+              Sobre la página
+            </Link>
+          </li>
           <li>
             {session?.user !== undefined ? (
               <form
@@ -23,18 +32,13 @@ export default async function Header() {
                   
                 }}
               >
-                <button type="submit">Cerrar Sesión</button>
+                <button type="submit"> <LogoutOutlined className="text-xl text-red-500 hover:text-red-400"/></button>
               </form>
             ) : (
               <Link className="text-gray-300 hover:text-white" href="/about">
                 Registrate
               </Link>
             )}
-          </li>
-          <li>
-            <Link className="text-gray-300 hover:text-white" href="/about">
-              Sobre la página
-            </Link>
           </li>
         </ul>
       </nav>
