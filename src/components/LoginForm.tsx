@@ -16,6 +16,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
+import { useFormState, useFormStatus } from 'react-dom';
+import { authenticate } from '@/actions/loginAction';
+
 import api from "@/api";
 
 const formSchema = z.object({
@@ -29,6 +32,9 @@ const formSchema = z.object({
 });
 
 export default function LoginForm() {
+
+  const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,7 +51,7 @@ export default function LoginForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form action={dispatch} className="space-y-8">
         <FormField
           control={form.control}
           name="username"

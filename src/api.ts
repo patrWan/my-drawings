@@ -89,7 +89,7 @@ const api = {
       ];
     },
 
-    getUser: async (username : string): Promise<User | undefined> => {
+    getUser: async (username : string | unknown): Promise<User | undefined> => {
         const user  = (await api.user.list()).find(user => user.username === username);
         return user;
     },
