@@ -11,12 +11,12 @@ export default async function Header() {
   //if (!session?.user) return null;
 
   return (
-    <header className="flex items-center justify-between">
-      <Link className="text-xl font-bold leading-[4rem]" href="/">
-        My Draws @ {session?.user?.name}
+    <header className="flex items-center justify-between  ">
+      <Link className="text-xl font-bold leading-[4rem] mx-8" href="/">
+         @{session?.user?.name} drawings
       </Link>
       <nav>
-        <ul className="flex gap gap-4">
+        <ul className="flex gap gap-4 items-center">
           
           <li>
             <Link className="text-gray-300 hover:text-white" href="/about">

@@ -1,7 +1,6 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
 
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';

@@ -17,7 +17,7 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
         <Header/>
         {children}
         <footer className="text-center leading-[4rem] opacity-70">
-          © {new Date().getFullYear()} My draw App
+          © {new Date().getFullYear()} My drawings App
         </footer>
       </body>
     </html>
