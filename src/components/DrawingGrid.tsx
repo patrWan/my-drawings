@@ -23,14 +23,14 @@ export default function DrawingGrid() {
   }, []);
   
   return (
-    <section className="grid gap-4 md:grid-cols-2 bg-gray-950 rounded-md">
+    <section className="grid gap-4 md:grid-cols-2 rounded-md text-black">
       {drawings.map(({ id, date, url, description }) => (
-        <div key={id} className="p-4">
+        <div key={id} className="p-4 border-2 bg-zinc-100 ">
           <p className="text-center text-sm opacity-55 mb-2">
             {dateFormat(date)}
           </p>
           <img
-            className="h-60 w-60 mx-auto shadow-lg shadow-black opacity-90 hover:opacity-100 rounded-sm cursor-pointer"
+            className="h-60 w-60 mx-auto shadow-md shadow-black opacity-90 hover:opacity-100 rounded-sm cursor-pointer hover:shadow-purple-600"
             src={url}
           />
           <p className="text-center my-4 text-sm text-balance opacity-70">

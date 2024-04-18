@@ -51,16 +51,17 @@ export default function LoginForm() {
 
   return (
     <Form {...form}>
-      <form action={dispatch} className="space-y-8">
+      <form action={dispatch} className="space-y-8 text-black">
+        <p className="text-red-500">{errorMessage}</p>
         <FormField
           control={form.control}
           name="username"
           render={({ field }) => (
             <>
               <FormItem>
-                <FormLabel className="text-white">Usuario</FormLabel>
+                <FormLabel className="text-black">Usuario</FormLabel>
                 <FormControl>
-                  <Input placeholder="Ingrese su usuario" {...field} />
+                  <Input className="bg-white" placeholder="Ingrese su usuario" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -73,16 +74,16 @@ export default function LoginForm() {
           render={({ field }) => (
             <>
               <FormItem>
-                <FormLabel className="text-white">Contraseña</FormLabel>
+                <FormLabel className="text-black">Contraseña</FormLabel>
                 <FormControl>
-                  <Input type="password" placeholder="******" {...field} />
+                  <Input className="bg-white" type="password" placeholder="Ingrese su contraseña" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             </>
           )}
         />
-        <Button type="submit" className="bg-zinc-950">Submit</Button>
+        <Button type="submit" className="bg-purple-950 text-white uppercase hover:bg-purple-600">Iniciar Sesión</Button>
       </form>
     </Form>
   );

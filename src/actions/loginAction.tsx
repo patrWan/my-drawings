@@ -22,6 +22,13 @@ export async function authenticate(prevState: string | undefined, formData: Form
       password : formData.get("password"),
       redirect : false
     });
+    console.log(response)
+    if(response?.error){
+      redirect("/");
+    }
+    
+
+    //console.log(response);
 
     redirect(`/${formData.get("username")}`);
 

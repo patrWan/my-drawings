@@ -13,10 +13,10 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
   
   return (
     <html lang="en">
-      <body className="container m-auto grid min-h-screen grid-rows-[auto,1fr,auto] bg-zinc-800 ">
+      <body className="bg-white container m-auto grid min-h-screen grid-rows-[auto,1fr,auto] ">
         <Header/>
         {children}
-        <footer className="text-center leading-[4rem] opacity-70">
+        <footer className="text-center leading-[4rem] opacity-70 text-black">
           © {new Date().getFullYear()} My drawings App
         </footer>
       </body>
