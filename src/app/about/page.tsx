@@ -1,3 +1,6 @@
+
+export const runtime = 'edge';
+
 export default function AboutPage() {
   return (
     <div className="m-auto text-black space-y-2">

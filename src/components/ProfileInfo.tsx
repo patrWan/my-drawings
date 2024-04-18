@@ -14,6 +14,8 @@ import {
   InstagramFilled,
   TwitterSquareFilled,
   FacebookFilled,
+  TwitchFilled,
+  RedditSquareFilled
 } from "@ant-design/icons";
 //import { dateFormat } from "@/lib/util";
 
@@ -69,6 +71,8 @@ export default function ProfileInfo() {
                     }
                 }
             )}
+            <TwitchFilled className="cursor-pointer text-purple-900 text-xl hover:text-purple-600"/>
+            <RedditSquareFilled className="cursor-pointer text-purple-900 text-xl hover:text-purple-600"/>
           
           
           

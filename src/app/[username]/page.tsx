@@ -1,6 +1,8 @@
 import DrawingGrid from "@/components/DrawingGrid";
 import ProfileInfo from "@/components/ProfileInfo";
 
+export const runtime = 'edge';
+
 export default async function UserPage() {
   
 
