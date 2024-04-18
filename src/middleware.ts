@@ -26,7 +26,8 @@ export async function middleware(request: NextRequest, response : NextResponse) 
   if (
     typeof userExist === "undefined" &&
     request.nextUrl.pathname !== "/" &&
-    request.nextUrl.pathname !== "/about"
+    request.nextUrl.pathname !== "/about" &&
+    request.nextUrl.pathname !== "/auth/singup"
   ) {
     return Response.error();
   }

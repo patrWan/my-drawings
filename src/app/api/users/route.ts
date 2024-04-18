@@ -1,21 +1,31 @@
 import db from "@/db";
 
 export async function GET(request: Request) {
-  const users = await db.profile.findMany();
-  const result = JSON.stringify(users);
+  const users = await db.user.deleteMany();
 
+  const result = JSON.stringify(users);
+  
   return new Response(result);
+
 }
 
 export async function POST(request: Request) {
-    const users = await db.user.create({
-        data : {
-            username : 'patr.wan',
-            password : 'xg57hhjpxn',
-            profileId : 1,
-        }
-    });
-    const result = JSON.stringify(users);
-  
-    return new Response(result);
-  }
+  const user = await db.user.create({
+    data: {
+      username: "nanitastica",
+      password: "xg57hhjpxn",
+      profile: {
+        create: {
+          picture: "",
+          description: "",
+          instagram: "",
+          facebook: "",
+          twitter: "",
+          twitch: "",
+        },
+      },
+    },
+  });
+  const result = JSON.stringify(user);
+  return new Response(result);
+}
