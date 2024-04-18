@@ -1,5 +1,6 @@
 import LoginForm from "@/components/LoginForm";
 import { auth } from "@/auth";
+import TestPrismaButton from "../components/TestPrismaButton";
 
 export const runtime = 'edge';
 
@@ -15,6 +16,7 @@ export default async function Home() {
           My @Drawings
         </h1>
         <LoginForm />
+        <TestPrismaButton/>
       </div>
     </main>
   );

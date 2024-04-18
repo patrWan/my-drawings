@@ -8,6 +8,7 @@ import api from "@/api";
 
 import { auth } from "@/auth";
 
+
 export default NextAuth(authConfig).auth;
 
 export async function middleware(request: NextRequest, response : NextResponse) {

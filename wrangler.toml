@@ -1,0 +1,8 @@
+name = "drawing-app"
+compatibility_date = "2024-03-20"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "drawings-db"
+database_id = "262fffeb-58d9-46a1-85a2-17efb22262bb"

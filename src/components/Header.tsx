@@ -8,6 +8,7 @@ import {
 import { Alkatra } from 'next/font/google';
 
 export const inter = Alkatra({ subsets: ['latin'] });
+export const runtime = 'edge'
 
 export default async function Header() {
   const session = await auth();
@@ -36,7 +37,7 @@ export default async function Header() {
                   
                 }}
               >
-                <button type="submit"> <LogoutOutlined className="text-xl text-red-500 hover:text-red-400"/></button>
+                <button type="submit"> a</button>
               </form>
             ) : (
               <Link className="text-purple-800 font-bold hover:text-purple-600" href="/about">
