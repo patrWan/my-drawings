@@ -24,8 +24,6 @@ import api from "@/api";
 //import { useRouter } from "next/router";
 
 
-import { hashPassword } from "@/lib/util";
-
 const formSchema = z.object({
   username: z
     .string()
@@ -50,8 +48,8 @@ export default function SingupForm() {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const password = await hashPassword(values.password);
-    singup(values.username, password);
+    
+    singup(values.username, values.password);
     
   }
 

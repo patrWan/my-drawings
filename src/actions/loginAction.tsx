@@ -5,7 +5,10 @@ import { redirect } from "next/navigation";
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 
+//import {comparePasword, hashPassword} from "@/lib/util";
 import db from "@/db";
+
+
 
 export async function login(username: string) {
   //await cookies().set('session', user[0].UserName);
@@ -22,9 +25,10 @@ export async function authenticate(
   formData: FormData
 ) {
   try {
-    console.log("AUTHENTICATE!!!!!!!!!")
     const username  = formData.get("username")?.toString();
     const password  = formData.get("password")?.toString();
+
+   
     
     const response = await signIn("credentials", {
       username,
@@ -53,7 +57,7 @@ export async function authenticate(
 }
 
 export async function singup(username: string, password: string) {
-  console.log(username, password);
+  //const hashedPassword = await hashPassword(password);
 
   const usernameExist = await db.user.findUnique({
     where: { username: username },
@@ -68,12 +72,12 @@ export async function singup(username: string, password: string) {
         password: password,
         profile: {
           create: {
-            picture: "/profile.png",
-            description: "My heart is saying I'm not caring no more",
-            instagram: "https://www.instagram.com/patr.wan/",
-            facebook: "https://www.instagram.com/patr.wan/",
-            twitter: "https://www.instagram.com/patr.wan/",
-            twitch: "https://www.instagram.com/patr.wan/",
+            picture: "",
+            description: "",
+            instagram: "",
+            facebook: "",
+            twitter: "",
+            twitch: "",
           },
         },
       },

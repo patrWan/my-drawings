@@ -1,11 +1,11 @@
 import db from "@/db";
 
 export async function GET(request: Request) {
-  const users = await db.user.deleteMany();
+  //const users = await db.profile.deleteMany();
 
-  const result = JSON.stringify(users);
+  //const result = JSON.stringify(users);
   
-  return new Response(result);
+  //return new Response(result);
 
 }
 

@@ -15,8 +15,8 @@ export async function hashPassword(password: string)  {
   return hash;
 }
 
-export async function comparePasword(password: string) {
-  const compare = await bcryptjs.compare(password, 'password from database here');
+export async function comparePasword(password: string, dbPassword : string) {
+  const compare = await bcryptjs.compare(password, dbPassword);
 
-  console.log(compare);
+  return compare;
 }

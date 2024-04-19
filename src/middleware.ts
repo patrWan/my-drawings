@@ -8,6 +8,7 @@ import api from "@/api";
 
 import { auth } from "@/auth";
 
+import db from "@/db";
 
 export default NextAuth(authConfig).auth;
 
@@ -34,11 +35,9 @@ export async function middleware(request: NextRequest, response : NextResponse) 
 }
 
 async function searchProfile(username: string) {
-  const userExist = await (
-    await api.user.list()
-  ).find((x) => x.username == username);
+  const userDB = await db.user.findUnique({where:{username : username}});
 
-  return userExist;
+  return userDB;
 }
 
 export const config = {
