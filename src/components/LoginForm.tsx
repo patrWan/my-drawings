@@ -28,7 +28,7 @@ const formSchema = z.object({
 
   password: z
   .string()
-  .min(1, {message: "El acmpo contraseña no puede estar vacío",}),
+  .min(1, {message: "El campo contraseña no puede estar vacío",}),
 });
 
 export default function LoginForm() {
@@ -51,8 +51,8 @@ export default function LoginForm() {
 
   return (
     <Form {...form}>
-      <form action={dispatch} className="space-y-8 text-black">
-        <p className="text-red-500">{errorMessage}</p>
+      <form action={dispatch} className="space-y-4 text-black">
+         <p className="text-red-500">{errorMessage}</p>
         <FormField
           control={form.control}
           name="username"

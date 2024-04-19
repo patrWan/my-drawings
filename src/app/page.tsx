@@ -1,6 +1,10 @@
 import LoginForm from "@/components/LoginForm";
 import { auth } from "@/auth";
 
+import { DM_Sans } from "next/font/google";
+
+export const font = DM_Sans({ subsets: ["latin"] });
+
 
 export const runtime = 'edge';
 
@@ -11,10 +15,10 @@ export default async function Home() {
 
   return (
     <main className="grid">
-      <div className="h-96 m-auto w-96 grid gap-1 p-4 border-2 text-black bg-zinc-100">
-        <h1 className="text-4x font-bold uppercase text-center">
+      <div className="h-96 m-auto w-96 grid gap-1 p-4 border-2 text-black bg-white border-black rounded-3xl">
+        <p className={`${font.className} text-2xl font-bold text-center`}>
           My @Drawings
-        </h1>
+        </p>
         <LoginForm />
       </div>
     </main>

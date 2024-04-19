@@ -34,7 +34,7 @@ export default function ProfileInfo() {
   }, []);
 
   return (
-    <section className="grid gap-4 md:grid-cols-4 rounded-md md:h-44 items-center w-full px-8 shadow-md shadow-black text-black">
+    <section className="grid gap-4 md:grid-cols-4 rounded-md md:h-44 items-center w-full px-8 shadow-md shadow-black text-black bg-background">
       <div className=" p-2 flex justify-center items-center w-full col-span-3 md:col-span-1">
         <img
           className="rounded-3xl h-36 w-36 border-8 border-gray-900 border-opacity-20"

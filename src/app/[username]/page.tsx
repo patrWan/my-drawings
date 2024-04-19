@@ -7,7 +7,7 @@ export default async function UserPage() {
   
 
   return (
-    <main className="p-4 flex flex-col space-y-10 bg-white">
+    <main className="p-4 flex flex-col space-y-10 bg-background">
       <ProfileInfo/>
       <DrawingGrid/>
     </main>

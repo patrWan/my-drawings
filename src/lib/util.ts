@@ -1,4 +1,4 @@
-import bcryptjs from "bcryptjs";
+//import bcryptjs from "bcryptjs";
 
 export function dateFormat(date: string) {
   return new Date(date).toLocaleDateString("es-CL", {
@@ -7,7 +7,7 @@ export function dateFormat(date: string) {
     month: "long",
   });
 }
-
+/*
 export async function hashPassword(password: string)  {
   const salt = await bcryptjs.genSalt(10);
   const hash = await bcryptjs.hash(password, salt);
@@ -20,3 +20,4 @@ export async function comparePasword(password: string, dbPassword : string) {
 
   return compare;
 }
+*/

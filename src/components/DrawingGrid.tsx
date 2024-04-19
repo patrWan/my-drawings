@@ -25,7 +25,7 @@ export default function DrawingGrid() {
   return (
     <section className="grid gap-4 md:grid-cols-2 rounded-md text-black">
       {drawings.map(({ id, date, url, description }) => (
-        <div key={id} className="p-4 border-2 bg-zinc-100 ">
+        <div key={id} className="p-4 border-2 bg-white ">
           <p className="text-center text-sm opacity-55 mb-2">
             {dateFormat(date)}
           </p>

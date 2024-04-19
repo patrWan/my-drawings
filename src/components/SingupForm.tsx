@@ -27,11 +27,11 @@ import api from "@/api";
 const formSchema = z.object({
   username: z
     .string()
-    .min(4, { message: "Tu usuario debe contener mas de 4 caracteres" }),
+    .min(4, { message: "Tu usuario debe contener 4 o más caracteres" }),
 
   password: z
     .string()
-    .min(6, { message: "La contraseña debe tener 6 o mas caracteres" }),
+    .min(6, { message: "La contraseña debe contener 6 o más caracteres" }),
 });
 
 export default function SingupForm() {
@@ -77,7 +77,7 @@ export default function SingupForm() {
                 <FormDescription className="opacity-80">
                   Este sera tu forma de identificarte
                 </FormDescription>
-                <FormMessage />
+                <FormMessage className="text-red-600"/>
               </FormItem>
             </>
           )}
@@ -97,7 +97,7 @@ export default function SingupForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-red-600"/>
               </FormItem>
             </>
           )}
