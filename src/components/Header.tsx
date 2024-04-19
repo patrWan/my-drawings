@@ -14,14 +14,14 @@ export default async function Header() {
   //if (!session?.user) return null;
 
   return (
-    <header className="flex items-center justify-between text-black  bg-background px-10">
+    <header className="flex items-center justify-between text-black bg-background md:px-10">
       <Link
         className={`${inter.className} text-2xl font-bold leading-[4rem] mx-8`}
         href="/"
       >
         {session?.user?.name?.toUpperCase()} | drawings
       </Link>
-      <nav>
+      <nav className="md:flex hidden">
         <ul className="flex gap gap-4 items-center">
           <li>
             <Link className="font-bold hover:text-purple-600" href="/about">
@@ -41,7 +41,7 @@ export default async function Header() {
                   }}
                 >
                   <button
-                    className="font-bold hover:text-purple-600"
+                    className="font-bold hover:text-red-600"
                     type="submit"
                   >
                     Cerrar Sesión
@@ -50,7 +50,7 @@ export default async function Header() {
               </div>
             ) : (
               <Link
-                className="bg-purple-950 text-white font-bold border-2 p-2 border-black rounded-xl shadow-md shadow-purple-600 hover:shadow-xl hover:shadow-purple-600"
+                className="bg-purple-950 text-white font-bold border-2 p-2 border-black rounded-xl shadow-sm shadow-purple-600 hover:shadow-md hover:shadow-purple-600"
                 href="/auth/singup"
               >
                 Registrate

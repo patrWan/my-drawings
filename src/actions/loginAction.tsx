@@ -100,3 +100,12 @@ export async function singup(username: string, password: string) {
     redirect(`/${username}`);
   }
 }
+
+export async function getProfile(username : string){
+  const user = await db.user.findUnique({where : {username : username}}) as any
+  const profile = await db.profile.findFirst({include : {user : true}, where : {user : {id : user?.id}}}) as any;
+  return {
+    user,
+    profile
+  };
+}

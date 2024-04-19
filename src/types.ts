@@ -9,17 +9,17 @@ export interface Drawing {
 export interface Profile {
   picture: string;
   description: string;
-  socialMedia : {
-    name : string;
-    url : string;
-  }[]
+  instagram : string,
+  twitter :string,
+  facebook :string,
+  twitch :string ,
 }
 
 export interface User {
   id: number;
   username: string;
   password: string;
-  profile : Profile;
-}
+  profileId : Profile;
+} 
 
 

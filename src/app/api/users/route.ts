@@ -1,11 +1,17 @@
 import db from "@/db";
 
 export async function GET(request: Request) {
-  //const users = await db.profile.deleteMany();
+  const user = await db.user.findUnique({where : {username : "patr.wan"}}) as any
+  const profile = await db.profile.findFirst({include : {user : true}, where : {user : {id : user?.id}}}) as any;
 
-  //const result = JSON.stringify(users);
-  
-  //return new Response(result);
+  const result = JSON.stringify({
+    user,
+    profile
+  });
+
+  return new Response(
+    result
+  );
 
 }
 

@@ -20,18 +20,20 @@ export async function middleware(request: NextRequest, response : NextResponse) 
   const userExist = await searchProfile(path);
   const session = await auth();
 
-  console.log(session?.user);
-
-  if (session?.user !== undefined && request.nextUrl.pathname === "/") return Response.redirect(`http://localhost:3000/${session.user.name}`)
+  console.log(userExist);
 
   if (
-    typeof userExist === "undefined" &&
+    userExist === null &&
     request.nextUrl.pathname !== "/" &&
     request.nextUrl.pathname !== "/about" &&
     request.nextUrl.pathname !== "/auth/singup"
   ) {
     return Response.error();
   }
+
+  if (session?.user !== undefined && request.nextUrl.pathname === "/") return Response.redirect(`http://localhost:3000/${session.user.name}`)
+
+  
 }
 
 async function searchProfile(username: string) {
