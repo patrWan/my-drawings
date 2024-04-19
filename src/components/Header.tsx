@@ -31,9 +31,9 @@ export default async function Header() {
           <li>
             {session?.user !== undefined ? (
               <div className="flex space-x-4">
-                <button className=" font-bold hover:text-purple-600">
-                  Mi Perfil
-                </button>
+                <Link className="font-bold hover:text-purple-600" href={`${session?.user?.name}/settings`}>
+                  Configuración
+                </Link>
                 <form
                   action={async () => {
                     "use server";

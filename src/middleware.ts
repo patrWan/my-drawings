@@ -20,10 +20,12 @@ export async function middleware(request: NextRequest, response : NextResponse) 
   const userExist = await searchProfile(path);
   const session = await auth();
 
-  console.log(userExist);
+  console.log("middleware userExist =>",userExist);
+  console.log("middleware session =>",session);
 
   if (
     userExist === null &&
+    session === null &&
     request.nextUrl.pathname !== "/" &&
     request.nextUrl.pathname !== "/about" &&
     request.nextUrl.pathname !== "/auth/singup"

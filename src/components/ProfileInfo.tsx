@@ -25,6 +25,7 @@ interface ProfileProps {
 export default function ProfileInfo() {
   const [user, setUser] = useState<User>();
   const [profile, setProfile] = useState<Profile>();
+  
   const pathname = usePathname();
 
   useEffect(() => {
