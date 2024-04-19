@@ -33,6 +33,8 @@ export async function middleware(request: NextRequest, response : NextResponse) 
 
   if (session?.user !== undefined && request.nextUrl.pathname === "/") return Response.redirect(`http://localhost:3000/${session.user.name}`)
 
+    if (session?.user !== undefined && request.nextUrl.pathname === "/auth/singup") return Response.redirect(`http://localhost:3000/${session.user.name}`)
+
   
 }
 
