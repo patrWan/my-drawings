@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 
-//import {comparePasword, hashPassword} from "@/lib/util";
 import db from "@/db";
 import { Profile, User } from "@/types";
 
@@ -141,4 +140,19 @@ export async function updateProfile(user : User, profile : Profile, userId : num
   })
 
   redirect(`/${user.username}`)
+}
+
+export async function updateProfilePicture(userId : number | undefined, url : string){
+  const user = await db.user.findUnique({where : {id : userId}}) as any
+  const profileId = await db.profile.findFirst({include : {user : true}, where : {user : {id : userId}}}) as any;
+  const updateProfile = await db.profile.update({
+    where: {
+      id: profileId.id,
+    },
+    data: {
+      picture : url,
+    },
+  });
+
+  redirect(`/${user.username}`);
 }
