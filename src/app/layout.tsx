@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { DM_Sans } from "next/font/google";
 
-export const font = DM_Sans({ subsets: ["latin"] });
+const font = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "My Drawings",
