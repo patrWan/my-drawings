@@ -6,7 +6,8 @@ import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 
 import db from "@/db";
-import { Profile, User } from "@/types";
+import { Drawing, Profile, User } from "@/types";
+import { revalidatePath } from "next/cache";
 
 
 
@@ -155,4 +156,24 @@ export async function updateProfilePicture(userId : number | undefined, url : st
   });
 
   redirect(`/${user.username}`);
+}
+
+export async function getDrawings(username : string) : Promise<Drawing[]>{
+  const user = await db.user.findUnique({where : {username : username}}) as any
+  const drawings = await db.drawing.findMany({where : {userId : user.id}}) as any;
+
+  return drawings;
+}
+
+export async function postDrawing(username : string | undefined, url : string, description : string){
+  const user = await db.user.findUnique({where : {username : username}}) as any
+  const post = await db.drawing.create({data : {
+    date : new Date().toString(),
+    url : url,
+    description : description,
+    user : {
+      connect : {id : user.id}
+    }
+  }});
+  revalidatePath(`/${user.username}`);
 }

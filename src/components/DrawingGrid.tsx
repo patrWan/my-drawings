@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 
 import type { Drawing, User } from "@/types";
 
-import api from "@/api";
 import { dateFormat } from "@/lib/util";
+import { getDrawings } from "@/actions/loginAction";
 
 export default function DrawingGrid() {
   const [drawings, setDrawings] = useState<Drawing[]>([]);
@@ -14,14 +14,13 @@ export default function DrawingGrid() {
   const pathname = usePathname();
 
   useEffect(() => {
-    async function getDrawings() {
-      const data = await api.drawing.getDrawings(pathname.slice(1,pathname.length));
+    async function getData() {
+      const data = await getDrawings(pathname.slice(1,pathname.length));
       setDrawings(data);
     }
 
-    getDrawings();
+    getData();
   }, []);
-  
   return (
     <section className="grid gap-4 md:grid-cols-2 rounded-md text-black">
       {drawings.map(({ id, date, url, description }) => (

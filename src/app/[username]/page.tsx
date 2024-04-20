@@ -3,7 +3,7 @@ import ProfileInfo from "@/components/ProfileInfo";
 //import db from "@/db";
 //import { User } from "@/types";
 
-export const runtime = 'edge';
+
 
 export default async function UserPage() {
   //const profile  = await db.profile.findUnique({where:{id : 15}});

@@ -4,6 +4,7 @@ import { auth, signOut } from "@/auth";
 import { LogoutOutlined } from "@ant-design/icons";
 
 import { Alkatra } from "next/font/google";
+import UploadDrawModal from "./UploadDrawModal";
 
 const inter = Alkatra({ subsets: ["latin"] });
 export const runtime = "edge";
@@ -12,7 +13,7 @@ export default async function Header() {
   const session = await auth();
 
   //if (!session?.user) return null;
-
+  
   return (
     <header className="flex items-center justify-between text-black bg-background md:px-10">
       <Link
@@ -22,6 +23,7 @@ export default async function Header() {
         {session?.user?.name?.toUpperCase()} | drawings
       </Link>
       <nav className="md:flex hidden">
+        <UploadDrawModal  username={session?.user?.name}/>
         <ul className="flex gap gap-4 items-center">
           <li>
             <Link className="font-bold hover:text-purple-600" href="/about">
