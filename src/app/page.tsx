@@ -3,7 +3,7 @@ import { auth } from "@/auth";
 
 import { DM_Sans } from "next/font/google";
 
-export const font = DM_Sans({ subsets: ["latin"] });
+const font = DM_Sans({ subsets: ["latin"] });
 
 
 export const runtime = 'edge';

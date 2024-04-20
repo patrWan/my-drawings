@@ -5,7 +5,7 @@ import { LogoutOutlined } from "@ant-design/icons";
 
 import { Alkatra } from "next/font/google";
 
-export const inter = Alkatra({ subsets: ["latin"] });
+const inter = Alkatra({ subsets: ["latin"] });
 export const runtime = "edge";
 
 export default async function Header() {
