@@ -20,8 +20,8 @@ export async function middleware(request: NextRequest, response : NextResponse) 
   const userExist = await searchProfile(path);
   const session = await auth();
 
-  console.log("middleware userExist =>",userExist);
-  console.log("middleware session =>",session);
+  //console.log("middleware userExist =>",userExist);
+  //console.log("middleware session =>",session);
 
   if (
     userExist === null &&

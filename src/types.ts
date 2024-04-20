@@ -7,7 +7,7 @@ export interface Drawing {
 }
 
 export interface Profile {
-  picture: string;
+  picture?: string;
   description: string;
   instagram : string,
   twitter :string,
@@ -16,10 +16,10 @@ export interface Profile {
 }
 
 export interface User {
-  id: number;
+  id?: number;
   username: string;
-  password: string;
-  profileId : Profile;
+  password?: string;
+  profileId? : Profile;
 } 
 
 

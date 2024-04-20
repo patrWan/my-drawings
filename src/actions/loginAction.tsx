@@ -7,6 +7,7 @@ import { AuthError } from "next-auth";
 
 //import {comparePasword, hashPassword} from "@/lib/util";
 import db from "@/db";
+import { Profile, User } from "@/types";
 
 
 
@@ -108,4 +109,34 @@ export async function getProfile(username : string){
     user,
     profile
   };
+}
+
+export async function updateProfile(user : User, profile : Profile, userId : number | undefined){
+  /*
+  const updateUser = await db.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      username: user.username,
+    },
+  })
+*/
+
+  const profileId = await db.profile.findFirst({include : {user : true}, where : {user : {id : userId}}}) as any;
+
+  const updateProfile = await db.profile.update({
+    where: {
+      id: profileId.id,
+    },
+    data: {
+      description : profile.description,
+      instagram : profile.description,
+      twitter : profile.twitter,
+      facebook : profile.facebook,
+      twitch : profile.twitch,
+    },
+  })
+
+  redirect(`/${user.username}`)
 }
