@@ -4,11 +4,9 @@ import  { NextResponse } from "next/server";
 import NextAuth from 'next-auth';
 import { authConfig } from './auth.config';
 
-import api from "@/api";
-
 import { auth } from "@/auth";
 
-import {db} from "@/db";
+import db from "@/db";
 
 export default NextAuth(authConfig).auth;
 
@@ -41,7 +39,7 @@ export async function middleware(request: NextRequest, response : NextResponse) 
 }
 
 async function searchProfile(username: string) {
-  const userDB = await db().user.findUnique({where:{username : username}});
+  const userDB = await db.user.findUnique({where:{username : username}});
   
   return userDB;
 }

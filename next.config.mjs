@@ -8,12 +8,4 @@ if (process.env.NODE_ENV === "development") {
   await setupDevPlatform();
 }
 
-const nextConfig = {
-  
-  webpack: (config) => {
-    config.externals = [...config.externals, 'bcrypt'];
-    return config;
-  }
-};
-
-export default nextConfig;
+const nextConfig = {};

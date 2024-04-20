@@ -64,7 +64,7 @@ export default function ProfileInfo() {
               ""
             )}
             {profile?.twitter ? (
-              <a href={profile?.instagram}>
+              <a href={profile?.twitter}>
                 <TwitterSquareFilled className="cursor-pointer text-purple-900 text-xl hover:text-purple-600" />
               </a>
             ) : (
