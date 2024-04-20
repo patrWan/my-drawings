@@ -4,7 +4,7 @@ import Credentials from "next-auth/providers/credentials";
 import api from "@/api";
 import { User } from "./types";
 
-import db from "@/db";
+import {db} from "@/db";
 
 
 
@@ -21,7 +21,7 @@ export const { auth, signIn, signOut } = NextAuth({
       async authorize(credentials, error) {
 
         const userExist = await api.user.getUser(credentials.username);
-        const userDB = await db.user.findUnique({where:{username : credentials.username as string}});
+        const userDB = await db().user.findUnique({where:{username : credentials.username as string}});
 
         if(!userDB) return false
 

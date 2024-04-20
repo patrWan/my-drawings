@@ -8,7 +8,7 @@ import api from "@/api";
 
 import { auth } from "@/auth";
 
-import db from "@/db";
+import {db} from "@/db";
 
 export default NextAuth(authConfig).auth;
 
@@ -22,7 +22,7 @@ export async function middleware(request: NextRequest, response : NextResponse) 
 
   //console.log("middleware userExist =>",userExist);
   //console.log("middleware session =>",session);
-
+  
   if (
     userExist === null &&
     session === null &&
@@ -41,8 +41,8 @@ export async function middleware(request: NextRequest, response : NextResponse) 
 }
 
 async function searchProfile(username: string) {
-  const userDB = await db.user.findUnique({where:{username : username}});
-
+  const userDB = await db().user.findUnique({where:{username : username}});
+  
   return userDB;
 }
 
