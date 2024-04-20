@@ -23,7 +23,6 @@ import api from "@/api";
 
 //import { useRouter } from "next/router";
 
-
 const formSchema = z.object({
   username: z
     .string()
@@ -32,6 +31,7 @@ const formSchema = z.object({
   password: z
     .string()
     .min(6, { message: "La contraseña debe contener 6 o más caracteres" }),
+  code: z.string(),
 });
 
 export default function SingupForm() {
@@ -43,14 +43,13 @@ export default function SingupForm() {
     defaultValues: {
       username: "",
       password: "",
+      code : "",
     },
   });
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    
-    singup(values.username, values.password);
-    
+    singup(values.username, values.password, values.code);
   }
 
   return (
@@ -77,7 +76,7 @@ export default function SingupForm() {
                 <FormDescription className="opacity-80">
                   Este sera tu forma de identificarte
                 </FormDescription>
-                <FormMessage className="text-red-600"/>
+                <FormMessage className="text-red-600" />
               </FormItem>
             </>
           )}
@@ -97,7 +96,28 @@ export default function SingupForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className="text-red-600"/>
+                <FormMessage className="text-red-600" />
+              </FormItem>
+            </>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="code"
+          render={({ field }) => (
+            <>
+              <FormItem>
+                <FormLabel className="text-black">Codigo de registro</FormLabel>
+                <FormControl>
+                  <Input
+                    className="bg-white"
+                    type="text"
+                    placeholder="Ingrese su codigo de registro"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage className="text-red-600" />
               </FormItem>
             </>
           )}

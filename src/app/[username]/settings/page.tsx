@@ -1,7 +1,8 @@
 import SettingsForm from "@/components/SettingsForm";
-import db from "@/db";
-import { SessionProvider } from "next-auth/react"
+
 import { auth } from "@/auth"
+
+export const runtime = 'edge';
 
 export default async function page() {
   const session = await auth()

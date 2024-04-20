@@ -57,8 +57,10 @@ export async function authenticate(
   }
 }
 
-export async function singup(username: string, password: string) {
+export async function singup(username: string, password: string, code : string) {
   //const hashedPassword = await hashPassword(password);
+
+  if(code !== "xg57hhjp123") redirect("/auth/singup");
 
   const usernameExist = await db.user.findUnique({
     where: { username: username },
