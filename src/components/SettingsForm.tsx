@@ -1,6 +1,10 @@
 "use client";
 
-import { getProfile, updateProfile, updateProfilePicture } from "@/actions/loginAction";
+import {
+  getProfile,
+  updateProfile,
+  updateProfilePicture,
+} from "@/actions/loginAction";
 import { User, Profile } from "@/types";
 import { useEffect, useState } from "react";
 
@@ -11,7 +15,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import {storage} from "@/firebase/config";
+import { storage } from "@/firebase/config";
 
 import {
   InstagramOutlined,
@@ -79,7 +83,6 @@ export default function SettingsForm({ username }: any) {
     },
   });
 
-  
   async function onSubmit(e: any) {
     e.preventDefault();
 
@@ -102,28 +105,42 @@ export default function SettingsForm({ username }: any) {
     e.preventDefault();
 
     const file = e.target.files[0];
-    if(file){
-      alert("cambiando foto de perfil" + file.name)
+    const fileName = file.name;
+    if (file) {
+      var idxDot = fileName.lastIndexOf(".") + 1;
+      var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+      if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+        
 
-      const storageRef = ref(storage, `profile_pictures/${user?.username}`);
-  
-      uploadBytes(storageRef, file).then((snapshot) => {
-        console.log(snapshot);
-        getDownloadURL(snapshot.ref).then((url) => {
-          console.log('File available at', url);
-          updateProfilePicture(user?.id, url);
-        })
-      });
+        const storageRef = ref(storage, `profile_pictures/${user?.username}`);
+
+        uploadBytes(storageRef, file).then((snapshot) => {
+          console.log(snapshot);
+          getDownloadURL(snapshot.ref).then((url) => {
+            console.log("File available at", url);
+            alert("Foto de perfil cambiada");
+            updateProfilePicture(user?.id, url);
+            
+          });
+        });
+      } else {
+        alert("Only jpg/jpeg and png files are allowed!");
+      }
     }
-    
   }
 
   return (
     <div className=" bg-white flex flex-col items-center space-y-4 border-2 p-12 w-1/2 m-auto">
       <h1>Configuración de la cuenta</h1>
       <form onSubmit={changePicture} className="flex">
-        <div >
-          <input className="p-2 w-96" type="file" name="picture" onChange={changePicture}/>
+        <div>
+          <input
+            className="p-2 w-96"
+            type="file"
+            name="picture"
+            accept="image/png, image/gif, image/jpeg"
+            onChange={changePicture}
+          />
         </div>
         <button
           className="h-11 w-32 text-xs text-white bg-purple-800 flex items-center justify-center  hover:bg-purple-600"

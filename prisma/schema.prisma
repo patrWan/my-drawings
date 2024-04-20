@@ -30,5 +30,16 @@ model User {
   password  String
   profile Profile @relation(fields: [profileId], references: [id])
   profileId Int @unique
+  drawing Drawing?
 }
+
+model Drawing {
+  id  Int @id @default(autoincrement())
+  date String
+  url String
+  description String
+  user User @relation(fields: [userId], references: [id])
+  userId Int @unique
+}
+
 
